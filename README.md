@@ -34,4 +34,4 @@
 ║ ║▌│█│║▌║█║│║▌║<br/>
 ╚═══════════════════════════════════►<br/>
 
-![QR-код на репозиторий](https://github.com/SkripaHella/IoT_Project/blob/main/qr-code.gif)
+![QR-код на репозиторий](https://github.com/SkripaHella/IoT_Project/blob/main/qr-code.gif "QR-код на репозиторий")
