@@ -86,6 +86,7 @@ void print_f(char temperature[], char pressure[], char humidity[])
 
 int main()
 {
+    int q=0;
     while(1) {
         char command_WAKE_UP[2] = {'a', 't'};
         for(int i = 0; i < strlen(command_WAKE_UP); i++)
@@ -95,20 +96,19 @@ int main()
         }
         dev.putc('\n');
         dev.putc('\r');
+        wait(3);
         pc.baud(115200);
         dev.baud(115200);
         char command_JOIN[9] = {'a', 't', '+', 'j', 'o', 'i', 'n', '\n', '\r'};
-        int q;
-        while(q==10) // 10
+        if(q==3) // 10
         {
-            for(int i = 0; i < 17; i++)
+            for(int i = 0; i < 9; i++)
             {
                 dev.putc(command_JOIN[i]);
                 pc.printf("%c", command_JOIN[i]);
             }
-            if(q==10)
-                q=0;
-            wait(5); // убрать
+            q=0;
+            wait(10);
         }
         q++;
         //print_f(data.Temperature, data.Pressure, data.Humidity);
@@ -143,60 +143,60 @@ int main()
         free(temp);
 
         // типа метод по преобразованию инта давления в символы
-        char* pres;
-        int k2 = sensor.getPressure();
-        pres = (char *)malloc(10 * sizeof(char));
-        int v2 = 0; //количество цифр в числе n
+        //char* pres;
+        //int k2 = sensor.getPressure();
+        //pres = (char *)malloc(10 * sizeof(char));
+        //int v2 = 0; //количество цифр в числе n
         //разбиваем на отдельные символы число n
-        while (k2 > 9)
-        {
-            pres[v2++] = (k2 % 10) + '0';
-            k2 = k2 / 10;
-        }
-        pres[v2++] = k2 + '0';
-        pres[v2] = '\0';
-        char t2;
+        //while (k2 > 9)
+        //{
+        //    pres[v2++] = (k2 % 10) + '0';
+        //    k2 = k2 / 10;
+        //}
+        //pres[v2++] = k2 + '0';
+        //pres[v2] = '\0';
+        //char t2;
         //инвертируем массив символов
-        for (int i = 0; i < v2 / 2; i++)
-        {
-            t2 = pres[i];
-            pres[i] = pres[v2 - 1 - i];
-            pres[v2 - 1 - i] = t2;
-        }
-        v2 = 0;
-        for(int i = 0; i < strlen(pres);i++)
-        {
-            command_SEND[i+15+strlen(temp)] += pres[i];
-        }
-        free(pres);
+        //for (int i = 0; i < v2 / 2; i++)
+        //{
+        //    t2 = pres[i];
+        //    pres[i] = pres[v2 - 1 - i];
+        //    pres[v2 - 1 - i] = t2;
+        //}
+        //v2 = 0;
+        //for(int i = 0; i < strlen(pres);i++)
+        //{
+        //    command_SEND[i+15+strlen(temp)] += pres[i];
+        //}
+        //free(pres);
 
         // типа метод по преобразованию инта влажности в символы
-        char* hum;
-        int k3 = sensor.getHumidity();
-        hum = (char *)malloc(10 * sizeof(char));
-        int v3 = 0; //количество цифр в числе n
+        //char* hum;
+        //int k3 = sensor.getHumidity();
+        //hum = (char *)malloc(10 * sizeof(char));
+        //int v3 = 0; //количество цифр в числе n
         //разбиваем на отдельные символы число n
-        while (k3 > 9)
-        {
-            hum[v3++] = (k3 % 10) + '0';
-            k3 = k3 / 10;
-        }
-        hum[v3++] = k3 + '0';
-        hum[v3] = '\0';
-        char t3;
+        //while (k3 > 9)
+        //{
+        //    hum[v3++] = (k3 % 10) + '0';
+        //    k3 = k3 / 10;
+        //}
+        //hum[v3++] = k3 + '0';
+        //hum[v3] = '\0';
+        //char t3;
         //инвертируем массив символов
-        for (int i = 0; i < v3 / 2; i++)
-        {
-            t2 = hum[i];
-            hum[i] = hum[v3 - 1 - i];
-            hum[v3 - 1 - i] = t3;
-        }
-        v3 = 0;
-        for(int i = 0; i < strlen(hum);i++)
-        {
-            command_SEND[i+15+strlen(temp)+strlen(pres)] += hum[i];
-        }
-        free(hum);
+        //for (int i = 0; i < v3 / 2; i++)
+        //{
+        //    t2 = hum[i];
+        //    hum[i] = hum[v3 - 1 - i];
+        //    hum[v3 - 1 - i] = t3;
+        //}
+        //v3 = 0;
+        //for(int i = 0; i < strlen(hum);i++)
+        //{
+        //    command_SEND[i+15+strlen(temp)+strlen(pres)] += hum[i];
+        //}
+        //free(hum);
 
         pc.baud(115200);
         dev.baud(115200);
@@ -207,21 +207,21 @@ int main()
         }
         dev.putc('\n');
         dev.putc('\r');
+        wait(7);
         pc.attach(&pc_recv, Serial::RxIrq);
         dev.attach(&dev_recv, Serial::RxIrq);
 
         char command_SLEEP[28] = {'a', 't', '+', 's', 'e', 't', '_', 'c', 'o', 'n', 'f', 'i', 'g', 
         '=', 'd', 'e', 'v', 'i', 'c', 'e', ':', 's', 'l', 'e', 'e', 'p', ':', '1'};
-        for(int i = 0; i < strlen(command_SEND); i++)
+        for(int i = 0; i < strlen(command_SLEEP); i++)
         {
-            dev.putc(command_SEND[i]);
-            pc.printf("%c", command_SEND[i]);
+            dev.putc(command_SLEEP[i]);
+            pc.printf("%c", command_SLEEP[i]);
         }
         dev.putc('\n');
         dev.putc('\r');
-        free(command_SLEEP);
         //data.Warning = '1';
-        ThisThread::sleep_for(10000);
+        ThisThread::sleep_for(5000); // или 10000 для демонстрации (а если для реальной работы, то 2700000, то есть сон 45 минут)
     }
 }
 
