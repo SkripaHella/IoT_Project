@@ -16,6 +16,8 @@
 
 #### [Пояснительная записка](https://github.com/SkripaHella/IoT_Project/blob/main/Samsung_IoT_29_06_2022.pdf) | [Презентация](https://github.com/SkripaHella/IoT_Project/blob/main/Samsung_IoT_29_06_22_pres.pptx)
 
+#### [Демонстрационное видео](https://drive.google.com/file/d/180h7xNPCD8ja9OkzYUSz_UOlsY63iQs3/view?usp=sharing)
+
 Используемое оборудование:
 - Отладочная плата [Nucleo F103RB](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f103rb.html).
 - Сенсор [UMDK-THP](https://www.unwireddevices.com/docs/umdk/umdk-thp/).
