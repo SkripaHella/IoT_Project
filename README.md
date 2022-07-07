@@ -14,8 +14,8 @@
 ### [Project v1.1](https://github.com/SkripaHella/IoT_Project/tree/main/project%20v1.1) *(Работает. Не актуально)*
 ### [Project v1.2](https://github.com/SkripaHella/IoT_Project/tree/main/project%20v1.2) *(Актуальная версия)* Проект создан в Mbed OS 5-й версии
 
-[Пояснительная записка](https://github.com/SkripaHella/IoT_Project/blob/main/Samsung_IoT_29_06_2022.pdf)
-[Презентация](https://github.com/SkripaHella/IoT_Project/blob/main/Samsung_IoT_29_06_22_pres.pptx)
+####[Пояснительная записка](https://github.com/SkripaHella/IoT_Project/blob/main/Samsung_IoT_29_06_2022.pdf)
+####[Презентация](https://github.com/SkripaHella/IoT_Project/blob/main/Samsung_IoT_29_06_22_pres.pptx)
 
 Используемое оборудование:
 - Отладочная плата [Nucleo F103RB](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f103rb.html).
